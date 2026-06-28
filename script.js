@@ -618,14 +618,25 @@ function exportarBackup() {
 
     let blob = new Blob([data], { type: "application/json" });
 
+    let agora = new Date();
+
+    let nomeArquivo =
+        `backup-financeiro-${agora.getFullYear()}-` +
+        `${String(agora.getMonth() + 1).padStart(2, "0")}-` +
+        `${String(agora.getDate()).padStart(2, "0")}_` +
+        `${String(agora.getHours()).padStart(2, "0")}-` +
+        `${String(agora.getMinutes()).padStart(2, "0")}-` +
+        `${String(agora.getSeconds()).padStart(2, "0")}.json`;
+
     let a = document.createElement("a");
 
     a.href = URL.createObjectURL(blob);
-    a.download = "backup-financeiro.json";
+
+    a.download = nomeArquivo;
 
     a.click();
-}
 
+}
 // ===========================
 // IMPORTAR BACKUP
 // ===========================
@@ -650,4 +661,42 @@ function importarBackup() {
 
         reader.readAsText(file);
     };
+// ===========================
+// LIMPAR TODOS OS DADOS
+// ===========================
+
+function limparTudo() {
+
+    if (!confirm(
+        "Será feito um backup automático antes da exclusão.\n\nDeseja continuar?"
+    )) return;
+
+    // Faz backup automaticamente
+    exportarBackup();
+
+    if (!confirm(
+        "Backup realizado.\n\nAgora deseja apagar TODOS os dados?"
+    )) return;
+
+    banco = {
+        receitas: [],
+        vale: [],
+        pagamento: [],
+        historico: []
+    };
+
+    const hoje = new Date();
+
+    mesAtual = String(hoje.getMonth() + 1).padStart(2, "0");
+    anoAtual = String(hoje.getFullYear());
+
+    localStorage.setItem("mesAtual", mesAtual);
+    localStorage.setItem("anoAtual", anoAtual);
+
+    salvarBanco();
+
+    atualizar();
+
+    alert("Todos os dados foram apagados com sucesso.");
+
 }
