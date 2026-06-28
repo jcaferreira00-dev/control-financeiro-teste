@@ -422,7 +422,11 @@ function toggleFixaPagamento(id){
 
     if(!item) return;
 
-    item.fixa = !item.fixa;
+    let novoEstado = !item.fixa;
+
+banco.vale
+    .filter(v => v.descricao === item.descricao)
+    .forEach(v => v.fixa = novoEstado);
 
     salvarBanco();
     atualizar();
@@ -447,7 +451,11 @@ function togglePagamento(id){
 
     if (!item) return;
 
-    item.pago = !item.pago;
+    let novoEstado = !item.fixa;
+
+banco.pagamento
+    .filter(p => p.descricao === item.descricao)
+    .forEach(p => p.fixa = novoEstado);
 
     salvarBanco();
     atualizar();
