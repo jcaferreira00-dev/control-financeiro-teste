@@ -500,7 +500,8 @@ Saldo: ${moeda(saldo)}
     banco.historico.unshift(texto);
 
     salvarBanco();
-    if (!confirm("Todas as contas deste mês foram pagas?")) {
+    
+if (!confirm("Todas as contas deste mês foram pagas?")) {
     // Você pode decidir apenas continuar ou fazer alguma ação.
 }
 
