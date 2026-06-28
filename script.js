@@ -316,7 +316,7 @@ Excluir
 }
 
 // ===========================
-// RENDER PAGAMENTOS
+// RENDER PAGAMENTO
 // ===========================
 
 function renderPagamento(lista) {
@@ -342,7 +342,7 @@ ${item.pago ? "Pago" : "Pagar"}
 
 <button
 class="${item.fixa ? "btnFixa" : "btnNormal"}"
-onclick="toggleFixaVale(${item.id})">
+onclick="toggleFixaPagamento(${item.id})">
 
 ${item.fixa ? "📌 Fixa" : "📍 Fixa"}
 
