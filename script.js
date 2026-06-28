@@ -239,8 +239,13 @@ saldoTela.innerText = moeda(saldo);
 saldoResumo.innerText = moeda(saldo);
 
 // MUDA A COR DO SALDO
-saldoTela.className = saldo < 0 ? "saldoNegativo" : "saldoPositivo";
-saldoResumo.className = saldo < 0 ? "saldoNegativoResumo" : "saldoPositivoResumo";
+if (saldo < 0) {
+    saldoTela.style.color = "#ff4d4d";
+    saldoResumo.style.color = "#d32f2f";
+} else {
+    saldoTela.style.color = "";
+    saldoResumo.style.color = "";
+}
 
 document.getElementById("resReceitas").innerText = moeda(totalReceitas);
 document.getElementById("resVale").innerText = moeda(totalVale);
