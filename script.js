@@ -430,7 +430,7 @@ function toggleFixaPagamento(id) {
     atualizar();
 }
 function toggleFixaVale(id){
-    let item = banco.value.find(v => v.id == id);
+    let item = banco.vale.find(v => v.id == id);
     if(!item) return;
     item.fixa = !item.fixa;
 
