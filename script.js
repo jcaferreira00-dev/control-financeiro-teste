@@ -343,9 +343,7 @@ ${item.pago ? "Pago" : "Pagar"}
 <button
 class="${item.fixa ? "btnFixa" : "btnNormal"}"
 onclick="toggleFixaPagamento(${item.id})">
-
 ${item.fixa ? "📌 Fixa" : "📍 Fixa"}
-
 </button>
 
 <button class="btnExcluir"
@@ -443,13 +441,13 @@ function toggleFixaVale(id){
 
 }
 
-function togglePagamento(id) {
+function togglePagamento(id){
 
     let item = banco.pagamento.find(p => p.id == id);
 
     if (!item) return;
 
-    item.pago = !item.pago;
+    item.fixa = !item.fixa;
 
     salvarBanco();
     atualizar();
@@ -548,9 +546,3 @@ function importarBackup() {
         reader.readAsText(file);
     };
 }
-
-// ===========================
-// INICIALIZAÇÃO FINAL
-// ===========================
-
-atualizar();
