@@ -292,3 +292,32 @@ li{
 }
 
 }
+.btnFecharMes{
+
+    width:100%;
+
+    padding:16px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2e7d32;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.btnFecharMes:hover{
+
+    background:#1b5e20;
+
+}
