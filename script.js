@@ -422,7 +422,7 @@ function toggleFixaPagamento(id){
 
     if(!item) return;
 
-    item.fixa = !item.fixa;
+    item.fixa = !item.pago;
 
     salvarBanco();
     atualizar();
