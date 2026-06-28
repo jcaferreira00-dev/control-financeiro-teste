@@ -518,7 +518,66 @@ if (mesAtual === 12) {
 // Salva o novo mês
 localStorage.setItem("mesAtual", mesAtual);
 localStorage.setItem("anoAtual", anoAtual);
+// ===========================
+// RECRIAR CONTAS FIXAS
+// ===========================
 
+// VALES FIXOS
+banco.vale
+    .filter(v => v.fixa)
+    .forEach(v => {
+
+        let existe = banco.vale.some(x =>
+            x.descricao === v.descricao &&
+            x.mes === mesAtual &&
+            x.ano === anoAtual
+        );
+
+        if (!existe) {
+
+            banco.vale.push({
+                id: novoID(),
+                descricao: v.descricao,
+                valor: v.valor,
+                pago: false,
+                fixa: true,
+                mes: mesAtual,
+                ano: anoAtual,
+                data: new Date().toLocaleDateString("pt-BR")
+            });
+
+        }
+
+    });
+
+
+// PAGAMENTOS FIXOS
+banco.pagamento
+    .filter(p => p.fixa)
+    .forEach(p => {
+
+        let existe = banco.pagamento.some(x =>
+            x.descricao === p.descricao &&
+            x.mes === mesAtual &&
+            x.ano === anoAtual
+        );
+
+        if (!existe) {
+
+            banco.pagamento.push({
+                id: novoID(),
+                descricao: p.descricao,
+                valor: p.valor,
+                pago: false,
+                fixa: true,
+                mes: mesAtual,
+                ano: anoAtual,
+                data: new Date().toLocaleDateString("pt-BR")
+            });
+
+        }
+
+    });
 // Atualiza os selects da tela
 document.getElementById("mesSelecionado").value = mesAtual;
 document.getElementById("anoSelecionado").value = anoAtual;
