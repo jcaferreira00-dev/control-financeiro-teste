@@ -311,7 +311,7 @@ ${item.pago ? "Pago" : "Pagar"}
 <button
 class="${item.fixa ? "btnFixa" : "btnNormal"}"
 onclick="toggleFixaVale(${item.id})">
-${item.fixa ? "📌 Fixa" : "📍 Fixa"}
+${item.fixa ? "📌" : "📍"}
 </button>
 
 <button class="btnExcluir"
@@ -355,7 +355,7 @@ ${item.pago ? "Pago" : "Pagar"}
 <button
 class="${item.fixa ? "btnFixa" : "btnNormal"}"
 onclick="toggleFixaPagamento(${item.id})">
-${item.fixa ? "📌 Fixa" : "📍 Fixa"}
+${item.fixa ? "📌" : "📍"}
 </button>
 
 <button class="btnExcluir"
