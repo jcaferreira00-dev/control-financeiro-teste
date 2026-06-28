@@ -4,7 +4,7 @@
 // =====================================================
 
 // ===========================
-// BANCO DE DADOS
+// BANCO DE DADOs
 // ===========================
 
 let banco = JSON.parse(localStorage.getItem("financeiro"));
@@ -402,7 +402,7 @@ function removerPagamento(id) {
 }
 
 // ===========================
-// TOGGLE (PAGO / NÃO PAGO)
+// TOGGLE VALE (PAGO / NÃO PAGO)
 // ===========================
 
 function toggleVale(id) {
@@ -416,49 +416,63 @@ function toggleVale(id) {
     salvarBanco();
     atualizar();
 }
-function toggleFixaPagamento(id){
 
-    let item = banco.pagamento.find(v => v.id == id);
+// ===========================
+// TOGGLE PAGAMENTO (PAGO / NÃO PAGO)
+// ===========================
 
-    if(!item) return;
+function togglePagamento(id) {
 
-    let novoEstado = !item.fixa;
+    let item = banco.pagamento.find(p => p.id == id);
 
-banco.vale
-    .filter(v => v.descricao === item.descricao)
-    .forEach(v => v.fixa = novoEstado);
+    if (!item) return;
+
+    item.pago = !item.pago;
 
     salvarBanco();
     atualizar();
-
 }
+
+// ===========================
+// TOGGLE CONTA FIXA (VALE)
+// ===========================
+
 function toggleFixaVale(id){
 
     let item = banco.vale.find(v => v.id == id);
 
     if(!item) return;
 
-    item.fixa = !item.fixa;
+    let novoEstado = !item.fixa;
+
+    banco.vale
+        .filter(v => v.descricao === item.descricao)
+        .forEach(v => v.fixa = novoEstado);
 
     salvarBanco();
     atualizar();
 
 }
 
-function togglePagamento(id){
+// ===========================
+// TOGGLE CONTA FIXA (PAGAMENTO)
+// ===========================
+
+function toggleFixaPagamento(id){
 
     let item = banco.pagamento.find(p => p.id == id);
 
-    if (!item) return;
+    if(!item) return;
 
     let novoEstado = !item.fixa;
 
-banco.pagamento
-    .filter(p => p.descricao === item.descricao)
-    .forEach(p => p.fixa = novoEstado);
+    banco.pagamento
+        .filter(p => p.descricao === item.descricao)
+        .forEach(p => p.fixa = novoEstado);
 
     salvarBanco();
     atualizar();
+
 }
 
 // ===========================
