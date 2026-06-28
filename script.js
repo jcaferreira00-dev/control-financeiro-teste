@@ -342,6 +342,14 @@ onclick="togglePagamento(${item.id})">
 ${item.pago ? "Pago" : "Pagar"}
 </button>
 
+<button
+class="${item.fixa ? "btnFixa" : "btnNormal"}"
+onclick="toggleFixaVale(${item.id})">
+
+${item.fixa ? "📌 Fixa" : "📍 Fixa"}
+
+</button>
+
 <button class="btnExcluir"
 onclick="removerPagamento(${item.id})">
 Excluir
@@ -408,6 +416,14 @@ function toggleVale(id) {
     if (!item) return;
 
     item.pago = !item.pago;
+
+    salvarBanco();
+    atualizar();
+}
+function toggleFixaVale(id){
+    let item = banco.value.find(v => v.id == id);
+    if(!item) return;
+    item.fixa = !item.fixa;
 
     salvarBanco();
     atualizar();
