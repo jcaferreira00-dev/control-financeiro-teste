@@ -661,6 +661,8 @@ function importarBackup() {
 
         reader.readAsText(file);
     };
+
+}
 // ===========================
 // LIMPAR TODOS OS DADOS
 // ===========================
