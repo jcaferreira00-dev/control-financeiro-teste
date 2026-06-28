@@ -1,0 +1,446 @@
+/* ===========================
+   GERAL
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#eef2f5;
+    color:#333;
+    padding:15px;
+}
+
+#app{
+    max-width:950px;
+    margin:auto;
+}
+
+/* ===========================
+   CABEÇALHO
+=========================== */
+
+header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+header h1{
+    color:#2e7d32;
+    margin-bottom:15px;
+}
+
+.saldo-card{
+
+    background:linear-gradient(135deg,#2e7d32,#43a047);
+
+    color:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.18);
+
+}
+
+.saldo-card h2{
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+}
+
+.saldo-card h1{
+
+    font-size:36px;
+
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.card{
+
+    background:white;
+
+    margin-top:20px;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.card h2{
+
+    color:#2e7d32;
+
+    margin-bottom:15px;
+
+}
+
+/* ===========================
+   LINHAS
+=========================== */
+
+.linha{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+input,
+select{
+
+    flex:1;
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+}
+
+input:focus,
+select:focus{
+
+    outline:none;
+
+    border-color:#2e7d32;
+
+}
+
+/* ===========================
+   BOTÕES
+=========================== */
+
+button{
+
+    border:none;
+
+    background:#2e7d32;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    font-size:15px;
+
+}
+
+button:hover{
+
+    transform:scale(1.03);
+
+    background:#256428;
+
+}
+
+/* ===========================
+   BOTÕES ESPECIAIS
+=========================== */
+
+.btnExcluir{
+
+    background:#d32f2f;
+
+}
+
+.btnExcluir:hover{
+
+    background:#b71c1c;
+
+}
+
+.btnEditar{
+
+    background:#ff9800;
+
+}
+
+.btnEditar:hover{
+
+    background:#ef6c00;
+
+}
+
+.btnPago{
+
+    background:#2e7d32;
+
+}
+
+.btnPagar{
+
+    background:#d32f2f;
+
+}
+
+/* ===========================
+   LISTAS
+=========================== */
+
+ul{
+
+    list-style:none;
+
+    margin-top:15px;
+
+}
+
+li{
+
+    background:#f7f7f7;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    margin-bottom:10px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    transition:.2s;
+
+}
+
+li:hover{
+
+    background:#eceff1;
+
+}
+
+/* ===========================
+   INFO
+=========================== */
+
+.itemInfo{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.itemTitulo{
+
+    font-size:16px;
+
+}
+
+.itemValor{
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    color:#2e7d32;
+
+}
+
+/* ===========================
+   SITUAÇÃO
+=========================== */
+
+.pago{
+
+    opacity:.6;
+
+    text-decoration:line-through;
+
+    color:#2e7d32;
+
+}
+
+.naoPago{
+
+    color:#d32f2f;
+
+    font-weight:bold;
+
+}
+
+/* ===========================
+   BOTÕES DOS ITENS
+=========================== */
+
+.itemBotoes{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+}
+
+/* ===========================
+   DUAS COLUNAS
+=========================== */
+
+.duas-colunas{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+/* ===========================
+   RESUMO
+=========================== */
+
+.resumo p{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.saldoFinal{
+
+    margin-top:15px;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#2e7d32;
+
+}
+
+/* ===========================
+   HISTÓRICO
+=========================== */
+
+#historico li{
+
+    display:block;
+
+    cursor:pointer;
+
+}
+
+#historico li:hover{
+
+    background:#e8f5e9;
+
+}
+
+/* ===========================
+   BOTÕES FERRAMENTAS
+=========================== */
+
+.botoes{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+/* ===========================
+   CHECKBOX
+=========================== */
+
+.checkbox{
+
+    width:22px;
+
+    height:22px;
+
+    cursor:pointer;
+
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media(max-width:700px){
+
+.duas-colunas{
+
+    grid-template-columns:1fr;
+
+}
+
+.linha{
+
+    flex-direction:column;
+
+}
+
+button{
+
+    width:100%;
+
+}
+
+input,
+select{
+
+    width:100%;
+
+}
+
+.itemBotoes{
+
+    width:100%;
+
+    margin-top:10px;
+
+}
+
+.itemBotoes button{
+
+    flex:1;
+
+}
+
+.saldo-card h1{
+
+    font-size:30px;
+
+}
+
+}
