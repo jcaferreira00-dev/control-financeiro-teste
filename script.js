@@ -418,24 +418,29 @@ function toggleVale(id) {
     salvarBanco();
     atualizar();
 }
-function toggleFixaPagamento(id) {
+function toggleFixaPagamento(id){
 
     let item = banco.pagamento.find(v => v.id == id);
 
-    if (!item) return;
+    if(!item) return;
 
     item.fixa = !item.fixa;
 
     salvarBanco();
     atualizar();
+
 }
 function toggleFixaVale(id){
+
     let item = banco.vale.find(v => v.id == id);
+
     if(!item) return;
+
     item.fixa = !item.fixa;
 
     salvarBanco();
     atualizar();
+
 }
 
 function togglePagamento(id) {
