@@ -22,9 +22,9 @@
     </div>
   </header>
 
-  <!-- MÊS -->
-  <section class="card">
-    <h2>Mês de Trabalho</h2>
+  <!-- MÊS + RECEITAS -->
+  <section class="card receitas">
+    <h2>Mês e Receitas</h2>
     <div class="linha">
       <select id="mesSelecionado" onchange="trocarMes()">
         <option value="01">Janeiro</option>
@@ -47,16 +47,10 @@
         <option>2027</option>
         <option>2028</option>
       </select>
-    </div>
-  </section>
 
-  <!-- RECEITAS -->
-  <section class="card receitas">
-    <h2>Receitas</h2>
-    <div class="linha">
-      <input id="descricaoReceita" placeholder="Adicionar nova receita">
+      <input id="descricaoReceita" placeholder="Nova receita">
       <input id="valorReceita" type="number" step="0.01" placeholder="Valor">
-      <button onclick="adicionarReceita()">Adicionar</button>
+      <button onclick="adicionarReceita()">➕</button>
     </div>
     <ul id="listaReceitas"></ul>
   </section>
