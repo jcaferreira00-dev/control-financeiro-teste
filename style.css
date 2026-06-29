@@ -99,9 +99,8 @@ header h1 {
   color: #1b5e20;
 }
 
-/* Botão ➕ compacto em Vale e Pagamento */
-.vale .btnAddVale,
-.pagamento .btnAddPagamento {
+/* Botão ➕ compacto apenas no Vale */
+.vale .btnAddVale {
   background: none;
   border: none;
   font-size: 22px;
@@ -109,8 +108,7 @@ header h1 {
   cursor: pointer;
   padding: 0 8px;
 }
-.vale .btnAddVale:hover,
-.pagamento .btnAddPagamento:hover {
+.vale .btnAddVale:hover {
   color: #0d47a1;
 }
 
@@ -156,3 +154,160 @@ li {
 
 .itemBotoes {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ==========================
+   BOTÕES DE AÇÃO
+========================== */
+.btnPagar {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.btnEditar {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.btnExcluir {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* ==========================
+   RESUMO
+========================== */
+.resumo p {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.saldoFinal {
+  font-weight: bold;
+  font-size: 18px;
+  color: #2e7d32;
+}
+
+/* ==========================
+   FERRAMENTAS
+========================== */
+.botoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.botoes button {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+/* ==========================
+   STATUS
+========================== */
+.pago {
+  background: #e8f5e9;
+}
+
+.naoPago {
+  background: white;
+}
+
+/* ==========================
+   HISTÓRICO
+========================== */
+#historico li {
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 12px;
+  white-space: pre-line;
+  border: 1px solid #ddd;
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+@media(max-width:800px) {
+  .duas-colunas {
+    grid-template-columns: 1fr;
+  }
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .itemBotoes {
+    width: 100%;
+  }
+  .itemBotoes button {
+    flex: 1;
+  }
+}
+
+@media(max-width:600px) {
+  .receitas .linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .receitas .linha input,
+  .receitas .linha button,
+  .receitas .linha select {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* ==========================
+   BOTÃO FECHAR MÊS
+========================== */
+.btnFecharMes {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background: #2e7d32;
+  color: white;
+  cursor: pointer;
+  transition: .2s;
+}
+.btnFecharMes:hover {
+  background: #1b5e20;
+}
+
+/* ==========================
+   SALDO POSITIVO/NEGATIVO
+========================== */
+.saldoPositivo {
+  background: #2e7d32;
+  color: #ffffff;
+}
+.saldoPositivo h1,
+.saldoPositivo h2 {
+  color: #ffffff;
+}
+
+.saldoNegativo {
+  background: #ffebee;
+  color: #d32f2f;
+}
