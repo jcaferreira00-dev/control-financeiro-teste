@@ -27,9 +27,16 @@
 <!-- CABEÇALHO -->
 <!-- ================================================== -->
 
+<!-- ================================================== -->
+<!-- DASHBOARD -->
+<!-- SALDO E EVOLUÇÃO FINANCEIRA -->
+<!-- ================================================== -->
+
 <div class="saldo-card">
 
-    <!-- LADO ESQUERDO -->
+    <!-- ============================================== -->
+    <!-- PAINEL ESQUERDO -->
+    <!-- ============================================== -->
 
     <div class="saldoEsquerda">
 
@@ -37,17 +44,50 @@
             💼
         </div>
 
-        <div>
+        <h2>Saldo Atual</h2>
 
-            <h2>Saldo Atual</h2>
+        <h1 id="saldoAtual">
+            R$ 0,00
+        </h1>
 
-            <h1 id="saldoAtual">
-                R$ 0,00
-            </h1>
+        <div class="indicadores">
+
+            <div class="indicador">
+                <span>🟢 Economia</span>
+                <strong id="indicadorEconomia">
+                    R$ 0,00
+                </strong>
+            </div>
+
+            <div class="indicador">
+                <span>🔴 Gastos</span>
+                <strong id="indicadorGastos">
+                    R$ 0,00
+                </strong>
+            </div>
+
+            <div class="indicador">
+                <span>📈 Comparação</span>
+                <strong id="indicadorComparacao">
+                    --
+                </strong>
+            </div>
 
         </div>
 
     </div>
+
+    <!-- ============================================== -->
+    <!-- PAINEL DIREITO -->
+    <!-- ============================================== -->
+
+    <div class="saldoDireita">
+
+        <canvas id="graficoMensal"></canvas>
+
+    </div>
+
+</div>
 
     <!-- LADO DIREITO -->
 
