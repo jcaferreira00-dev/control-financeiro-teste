@@ -293,6 +293,28 @@ button:hover{
 .duas-colunas{
     grid-template-columns:1fr;
 }
+   
+/* ==========================
+   RESPONSIVO - RECEITAS
+========================== */
+
+@media(max-width:600px){
+  .receitas .linha {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto; /* descrição, valor, botão */
+    gap: 8px;
+  }
+
+  .receitas .linha input {
+    min-width: 0; /* evita quebra no celular */
+  }
+
+  .receitas .linha button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
 
 /* ==========================
    BOTÃO FECHAR MÈS
