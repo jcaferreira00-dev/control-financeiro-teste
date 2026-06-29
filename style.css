@@ -1,125 +1,158 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+/* ==========================
+   GERAL
+========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Controle Financeiro</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2e7d32">
-</head>
+body {
+  background: #f2f5f8;
+  color: #333;
+  padding: 20px;
+}
 
-<body>
-<div id="app">
+#app {
+  max-width: 1100px;
+  margin: auto;
+}
 
-  <!-- CABEÇALHO -->
-  <header>
-    <h1>💰 Controle Financeiro</h1>
-    <div class="saldo-card saldoPositivo">
-      <h2>Saldo Atual</h2>
-      <h1 id="saldoAtual">R$ 0,00</h1>
-    </div>
-  </header>
+/* ==========================
+   CABEÇALHO
+========================== */
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
 
-  <!-- MÊS + RECEITAS -->
-  <section class="card receitas">
-    <h2>Mês e Receitas</h2>
-    <div class="linha">
-      <select id="mesSelecionado" onchange="trocarMes()">
-        <option value="01">Janeiro</option>
-        <option value="02">Fevereiro</option>
-        <option value="03">Março</option>
-        <option value="04">Abril</option>
-        <option value="05">Maio</option>
-        <option value="06">Junho</option>
-        <option value="07">Julho</option>
-        <option value="08">Agosto</option>
-        <option value="09">Setembro</option>
-        <option value="10">Outubro</option>
-        <option value="11">Novembro</option>
-        <option value="12">Dezembro</option>
-      </select>
+header h1 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
 
-      <select id="anoSelecionado" onchange="trocarMes()">
-        <option>2025</option>
-        <option selected>2026</option>
-        <option>2027</option>
-        <option>2028</option>
-      </select>
+.saldo-card {
+  background: #2e7d32;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
 
-      <input id="descricaoReceita" placeholder="Nova receita">
-      <input id="valorReceita" type="number" step="0.01" placeholder="Valor">
-      <button class="btnAddReceita" onclick="adicionarReceita()">➕</button>
-    </div>
-    <ul id="listaReceitas"></ul>
-  </section>
+.saldo-card h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
 
-  <!-- DESPESAS -->
-  <section class="duas-colunas">
+.saldo-card h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
 
-    <div class="card vale despesas">
-      <h2>Despesas no Vale</h2>
-      <div class="linha">
-        <input id="descricaoVale" placeholder="Adicionar nova despesa">
-        <input id="valorVale" type="number" step="0.01" placeholder="Valor">
-        <button class="btnAddVale" onclick="adicionarVale()">➕</button>
-      </div>
-      <ul id="listaVale"></ul>
-    </div>
+/* ==========================
+   CARDS
+========================== */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
 
-    <div class="card pagamento despesas">
-      <h2>Despesas no Pagamento</h2>
-      <div class="linha">
-        <input id="descricaoPagamento" placeholder="Adicionar nova despesa">
-        <input id="valorPagamento" type="number" step="0.01" placeholder="Valor">
-        <button onclick="adicionarPagamento()">Adicionar</button>
-      </div>
-      <ul id="listaPagamento"></ul>
-    </div>
+.card h2 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
 
-  </section>
+/* ==========================
+   INPUTS
+========================== */
+.linha {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
 
-  <!-- RESUMO -->
-  <section class="card resumo">
-    <h2>Resumo</h2>
-    <p><span>Receitas</span><span id="resReceitas">R$ 0,00</span></p>
-    <p><span>Vale</span><span id="resVale">R$ 0,00</span></p>
-    <p><span>Pagamentos</span><span id="resPagamento">R$ 0,00</span></p>
-    <p class="saldoFinal"><span>Saldo</span><span id="saldoResumo">R$ 0,00</span></p>
-  </section>
+.linha input,
+.linha select {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
 
-  <!-- FECHAR MÊS -->
-  <section class="card">
-    <button class="btnFecharMes" onclick="fecharMes()">📅 Fechar Mês</button>
-  </section>
+/* Botão ➕ compacto em Receitas */
+.btnAddReceita {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #2e7d32;
+  cursor: pointer;
+  padding: 0 8px;
+}
+.btnAddReceita:hover {
+  color: #1b5e20;
+}
 
-  <!-- HISTÓRICO -->
-  <section class="card">
-    <h2>Histórico dos Meses</h2>
-    <ul id="historico"></ul>
-  </section>
+/* Botão ➕ compacto em Vale e Pagamento */
+.vale .btnAddVale,
+.pagamento .btnAddPagamento {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #1976d2;
+  cursor: pointer;
+  padding: 0 8px;
+}
+.vale .btnAddVale:hover,
+.pagamento .btnAddPagamento:hover {
+  color: #0d47a1;
+}
 
-  <!-- FERRAMENTAS -->
-  <section class="card">
-    <h2>Ferramentas</h2>
-    <div class="botoes">
-      <button onclick="exportarBackup()">💾 Backup</button>
-      <button onclick="importarBackup()">📂 Restaurar</button>
-      <button class="btnExcluirTudo" onclick="limparTudo()">🗑️ Limpar Tudo</button>
-    </div>
-  </section>
+/* ==========================
+   DUAS COLUNAS
+========================== */
+.duas-colunas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 
-</div>
+/* ==========================
+   LISTAS
+========================== */
+ul {
+  list-style: none;
+}
+li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  gap: 10px;
+}
 
-<input type="file" id="arquivoBackup" style="display:none">
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 
-<script src="script.js"></script>
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js");
-  }
-</script>
+.itemTitulo {
+  font-weight: bold;
+  font-size: 15px;
+}
 
-</body>
-</html>
+.itemValor {
+  color: #2e7d32;
+  font-size: 14px;
+}
+
+.itemBotoes {
+  display: flex;
