@@ -278,6 +278,10 @@ button:hover{
     grid-template-columns:1fr;
 }
 
+/* ==========================
+   BOTÃO FECHAR MÈS
+========================== */
+
 .itemBotoes{
     margin-top:10px;
 }
@@ -299,25 +303,15 @@ li{
 .btnFecharMes{
 
     width:100%;
-
     padding:16px;
-
     font-size:18px;
-
     font-weight:bold;
-
     border:none;
-
     border-radius:12px;
-
     background:#2e7d32;
-
     color:white;
-
     cursor:pointer;
-
     transition:.2s;
-
 }
 
 .btnFecharMes:hover{
@@ -329,10 +323,31 @@ li{
 /* ==========================
    SALDO POSITIVO/NEGATIVO
 ========================== */
-.saldoNegativo { 
-   background: #ffebee; color: #d32f2f; }
-.saldoPositivo { 
-   background: #e8f5e9; color: #2e7d32; }
+/* ==========================
+   SALDO ATUAL - VISUAL MELHORADO
+========================== */
+
+.saldo-card {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Saldo positivo */
+.saldoPositivo {
+  background: #2e7d32; /* verde principal */
+  color: #ffffff;
+}
+
+/* Saldo negativo */
+.saldoNegativo {
+  background: #ffebee; /* vermelho claro */
+  color: #d32f2f;
+}
+
+/* Valor do saldo com destaque */
+.saldo-card h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
 
 
 
