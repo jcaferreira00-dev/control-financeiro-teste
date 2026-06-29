@@ -50,7 +50,6 @@ header h1 {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 3px 10px rgba(0,0,0,.15);
-  transition: .3s;
 }
 
 .saldo-card h2 {
@@ -72,12 +71,6 @@ header h1 {
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  transition: .2s;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,.12);
 }
 
 .card h2 {
@@ -91,6 +84,7 @@ header h1 {
 .linha {
   display: flex;
   gap: 10px;
+  align-items: center;
   flex-wrap: wrap;
   margin-bottom: 15px;
 }
@@ -102,9 +96,15 @@ header h1 {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 15px;
 }
 
+/* botão sempre ao lado */
+.linha button {
+  flex: 0;
+  white-space: nowrap;
+}
+
+/* foco bonito */
 input:focus,
 select:focus {
   outline: none;
@@ -134,7 +134,6 @@ button:active {
   border: none;
   font-size: 22px;
   color: var(--verde);
-  padding: 0 8px;
 }
 
 .btnAddReceita:hover {
@@ -146,20 +145,17 @@ button:active {
   border: none;
   font-size: 22px;
   color: var(--azul);
-  padding: 0 8px;
 }
 
 .vale .btnAddVale:hover {
   color: var(--azul-escuro);
 }
 
-/* (ADICIONADO) botão de pagamento */
 .pagamento .btnAddPagamento {
   background: none;
   border: none;
   font-size: 22px;
   color: var(--verde);
-  padding: 0 8px;
 }
 
 /* ==========================
@@ -178,16 +174,32 @@ ul {
   list-style: none;
 }
 
-li {
+/* RECEITAS EM 2 COLUNAS */
+#listaReceitas {
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  padding: 10px 12px;
-  border-bottom: 1px solid #eee;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
+/* ITENS */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* estilo de card nas receitas */
+#listaReceitas li {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+/* info do item */
 .itemInfo {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -206,15 +218,15 @@ li {
 ========================== */
 .itemBotoes {
   display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 5px;
 }
 
 .btnPagar {
   background: var(--azul);
   color: white;
   border: none;
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-radius: 6px;
 }
 
@@ -222,7 +234,7 @@ li {
   background: #ff9800;
   color: white;
   border: none;
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-radius: 6px;
 }
 
@@ -230,7 +242,7 @@ li {
   background: var(--vermelho);
   color: white;
   border: none;
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-radius: 6px;
 }
 
@@ -275,10 +287,6 @@ li {
   background: #e8f5e9;
 }
 
-.naoPago {
-  background: white;
-}
-
 /* ==========================
    HISTÓRICO
 ========================== */
@@ -287,7 +295,6 @@ li {
   border-radius: 8px;
   margin-bottom: 10px;
   padding: 12px;
-  white-space: pre-line;
   border: 1px solid #ddd;
 }
 
@@ -310,19 +317,6 @@ li {
 }
 
 /* ==========================
-   SALDO POSITIVO / NEGATIVO
-========================== */
-.saldoPositivo {
-  background: var(--verde);
-  color: white;
-}
-
-.saldoNegativo {
-  background: #ffebee;
-  color: var(--vermelho);
-}
-
-/* ==========================
    RESPONSIVO
 ========================== */
 @media (max-width: 800px) {
@@ -330,8 +324,19 @@ li {
     grid-template-columns: 1fr;
   }
 
-  li {
+  #listaReceitas {
     grid-template-columns: 1fr;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .itemBotoes {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
