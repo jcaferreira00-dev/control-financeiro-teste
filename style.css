@@ -338,3 +338,97 @@ li{
 .saldoPositivo{
     color:#ffffff;
 }
+/* =====================================================
+   DASHBOARD
+   CABEÇALHO
+   ===================================================== */
+
+.saldo-card{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:25px;
+
+    padding:20px;
+
+}
+
+.saldoEsquerda{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.iconeCarteira{
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    background:#2e7d32;
+
+    color:white;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+}
+
+.saldoEsquerda h2{
+
+    margin:0;
+
+    font-size:18px;
+
+    color:#777;
+
+}
+
+.saldoEsquerda h1{
+
+    margin-top:6px;
+
+    font-size:34px;
+
+}
+
+.saldoDireita{
+
+    flex:1;
+
+    height:170px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+#graficoMensal{
+
+    width:100%;
+
+    height:100%;
+
+}
