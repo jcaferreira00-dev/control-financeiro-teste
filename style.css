@@ -1,4 +1,16 @@
 /* ==========================
+   VARIÁVEIS
+========================== */
+:root {
+  --verde: #2e7d32;
+  --verde-escuro: #1b5e20;
+  --azul: #1976d2;
+  --azul-escuro: #0d47a1;
+  --vermelho: #d32f2f;
+  --bg: #f2f5f8;
+}
+
+/* ==========================
    GERAL
 ========================== */
 * {
@@ -9,7 +21,7 @@
 }
 
 body {
-  background: #f2f5f8;
+  background: var(--bg);
   color: #333;
   padding: 20px;
 }
@@ -28,16 +40,17 @@ header {
 }
 
 header h1 {
-  color: #2e7d32;
+  color: var(--verde);
   margin-bottom: 15px;
 }
 
 .saldo-card {
-  background: #2e7d32;
+  background: var(--verde);
   color: white;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 3px 10px rgba(0,0,0,.15);
+  transition: .3s;
 }
 
 .saldo-card h2 {
@@ -59,10 +72,16 @@ header h1 {
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.12);
 }
 
 .card h2 {
-  color: #2e7d32;
+  color: var(--verde);
   margin-bottom: 15px;
 }
 
@@ -86,30 +105,61 @@ header h1 {
   font-size: 15px;
 }
 
-/* Botão ➕ compacto em Receitas */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 2px rgba(46,125,50,0.2);
+}
+
+/* ==========================
+   BOTÕES
+========================== */
+button {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* BOTÕES ➕ */
 .btnAddReceita {
   background: none;
   border: none;
   font-size: 22px;
-  color: #2e7d32;
-  cursor: pointer;
+  color: var(--verde);
   padding: 0 8px;
 }
+
 .btnAddReceita:hover {
-  color: #1b5e20;
+  color: var(--verde-escuro);
 }
 
-/* Botão ➕ compacto apenas no Vale */
 .vale .btnAddVale {
   background: none;
   border: none;
   font-size: 22px;
-  color: #1976d2;
-  cursor: pointer;
+  color: var(--azul);
   padding: 0 8px;
 }
+
 .vale .btnAddVale:hover {
-  color: #0d47a1;
+  color: var(--azul-escuro);
+}
+
+/* (ADICIONADO) botão de pagamento */
+.pagamento .btnAddPagamento {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--verde);
+  padding: 0 8px;
 }
 
 /* ==========================
@@ -127,6 +177,7 @@ header h1 {
 ul {
   list-style: none;
 }
+
 li {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -139,31 +190,28 @@ li {
 .itemInfo {
   display: flex;
   flex-direction: column;
-  gap: 2px;
 }
 
 .itemTitulo {
   font-weight: bold;
-  font-size: 15px;
 }
 
 .itemValor {
-  color: #2e7d32;
+  color: var(--verde);
   font-size: 14px;
-}
-
-.itemBotoes {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 6px;
 }
 
 /* ==========================
    BOTÕES DE AÇÃO
 ========================== */
+.itemBotoes {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
 .btnPagar {
-  background: #1976d2;
+  background: var(--azul);
   color: white;
   border: none;
   padding: 6px 10px;
@@ -179,7 +227,7 @@ li {
 }
 
 .btnExcluir {
-  background: #d32f2f;
+  background: var(--vermelho);
   color: white;
   border: none;
   padding: 6px 10px;
@@ -198,7 +246,7 @@ li {
 .saldoFinal {
   font-weight: bold;
   font-size: 18px;
-  color: #2e7d32;
+  color: var(--verde);
 }
 
 /* ==========================
@@ -212,9 +260,9 @@ li {
 
 .botoes button {
   flex: 1;
-  min-width: 180px;
+  min-width: 150px;
   padding: 12px;
-  background: #2e7d32;
+  background: var(--verde);
   color: white;
   border: none;
   border-radius: 8px;
@@ -244,39 +292,6 @@ li {
 }
 
 /* ==========================
-   RESPONSIVO
-========================== */
-@media(max-width:800px) {
-  .duas-colunas {
-    grid-template-columns: 1fr;
-  }
-  li {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .itemBotoes {
-    width: 100%;
-  }
-  .itemBotoes button {
-    flex: 1;
-  }
-}
-
-@media(max-width:600px) {
-  .receitas .linha {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .receitas .linha input,
-  .receitas .linha button,
-  .receitas .linha select {
-    min-width: 0;
-    width: 100%;
-  }
-}
-
-/* ==========================
    BOTÃO FECHAR MÊS
 ========================== */
 .btnFecharMes {
@@ -286,28 +301,48 @@ li {
   font-weight: bold;
   border: none;
   border-radius: 12px;
-  background: #2e7d32;
+  background: var(--verde);
   color: white;
-  cursor: pointer;
-  transition: .2s;
 }
+
 .btnFecharMes:hover {
-  background: #1b5e20;
+  background: var(--verde-escuro);
 }
 
 /* ==========================
-   SALDO POSITIVO/NEGATIVO
+   SALDO POSITIVO / NEGATIVO
 ========================== */
 .saldoPositivo {
-  background: #2e7d32;
-  color: #ffffff;
-}
-.saldoPositivo h1,
-.saldoPositivo h2 {
-  color: #ffffff;
+  background: var(--verde);
+  color: white;
 }
 
 .saldoNegativo {
   background: #ffebee;
-  color: #d32f2f;
+  color: var(--vermelho);
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+@media (max-width: 800px) {
+  .duas-colunas {
+    grid-template-columns: 1fr;
+  }
+
+  li {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .linha {
+    flex-direction: column;
+  }
+
+  .linha input,
+  .linha select,
+  .linha button {
+    width: 100%;
+  }
 }
