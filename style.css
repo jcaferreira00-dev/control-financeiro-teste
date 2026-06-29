@@ -1,16 +1,4 @@
 /* ==========================
-   VARIÁVEIS
-========================== */
-:root {
-  --verde: #2e7d32;
-  --verde-escuro: #1b5e20;
-  --azul: #1976d2;
-  --azul-escuro: #0d47a1;
-  --vermelho: #d32f2f;
-  --bg: #f2f5f8;
-}
-
-/* ==========================
    GERAL
 ========================== */
 * {
@@ -21,7 +9,7 @@
 }
 
 body {
-  background: var(--bg);
+  background: #f2f5f8;
   color: #333;
   padding: 20px;
 }
@@ -40,12 +28,12 @@ header {
 }
 
 header h1 {
-  color: var(--verde);
+  color: #2e7d32;
   margin-bottom: 15px;
 }
 
 .saldo-card {
-  background: var(--verde);
+  background: #2e7d32;
   color: white;
   padding: 20px;
   border-radius: 12px;
@@ -74,7 +62,7 @@ header h1 {
 }
 
 .card h2 {
-  color: var(--verde);
+  color: #2e7d32;
   margin-bottom: 15px;
 }
 
@@ -84,7 +72,6 @@ header h1 {
 .linha {
   display: flex;
   gap: 10px;
-  align-items: center;
   flex-wrap: wrap;
   margin-bottom: 15px;
 }
@@ -96,66 +83,21 @@ header h1 {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  font-size: 15px;
 }
 
-/* botão sempre ao lado */
-.linha button {
-  flex: 0;
-  white-space: nowrap;
-}
-
-/* foco bonito */
-input:focus,
-select:focus {
-  outline: none;
-  border-color: var(--verde);
-  box-shadow: 0 0 0 2px rgba(46,125,50,0.2);
-}
-
-/* ==========================
-   BOTÕES
-========================== */
-button {
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-/* BOTÕES ➕ */
+/* Botão ➕ compacto */
 .btnAddReceita {
   background: none;
   border: none;
   font-size: 22px;
-  color: var(--verde);
+  color: #2e7d32;
+  cursor: pointer;
+  padding: 0 8px;
 }
 
 .btnAddReceita:hover {
-  color: var(--verde-escuro);
-}
-
-.vale .btnAddVale {
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: var(--azul);
-}
-
-.vale .btnAddVale:hover {
-  color: var(--azul-escuro);
-}
-
-.pagamento .btnAddPagamento {
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: var(--verde);
+  color: #1b5e20;
 }
 
 /* ==========================
@@ -173,181 +115,54 @@ button:active {
 ul {
   list-style: none;
 }
-
-/* RECEITAS EM 2 COLUNAS */
-#listaReceitas {
+li {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
   gap: 10px;
 }
 
-/* ITENS */
-li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-/* estilo de card nas receitas */
-#listaReceitas li {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-/* info do item */
 .itemInfo {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .itemTitulo {
   font-weight: bold;
+  font-size: 15px;
 }
 
 .itemValor {
-  color: var(--verde);
+  color: #2e7d32;
   font-size: 14px;
+}
+
+.itemBotoes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 /* ==========================
    BOTÕES DE AÇÃO
 ========================== */
-.itemBotoes {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-
-.btnPagar {
-  background: var(--azul);
-  color: white;
-  border: none;
-  padding: 5px 8px;
-  border-radius: 6px;
-}
-
 .btnEditar {
   background: #ff9800;
   color: white;
   border: none;
-  padding: 5px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
+  font-size: 14px;
 }
 
 .btnExcluir {
-  background: var(--vermelho);
+  background: #d32f2f;
   color: white;
   border: none;
-  padding: 5px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
-}
-
-/* ==========================
-   RESUMO
-========================== */
-.resumo p {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-}
-
-.saldoFinal {
-  font-weight: bold;
-  font-size: 18px;
-  color: var(--verde);
-}
-
-/* ==========================
-   FERRAMENTAS
-========================== */
-.botoes {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.botoes button {
-  flex: 1;
-  min-width: 150px;
-  padding: 12px;
-  background: var(--verde);
-  color: white;
-  border: none;
-  border-radius: 8px;
-}
-
-/* ==========================
-   STATUS
-========================== */
-.pago {
-  background: #e8f5e9;
-}
-
-/* ==========================
-   HISTÓRICO
-========================== */
-#historico li {
-  background: #fafafa;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  padding: 12px;
-  border: 1px solid #ddd;
-}
-
-/* ==========================
-   BOTÃO FECHAR MÊS
-========================== */
-.btnFecharMes {
-  width: 100%;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  background: var(--verde);
-  color: white;
-}
-
-.btnFecharMes:hover {
-  background: var(--verde-escuro);
-}
-
-/* ==========================
-   RESPONSIVO
-========================== */
-@media (max-width: 800px) {
-  .duas-colunas {
-    grid-template-columns: 1fr;
-  }
-
-  #listaReceitas {
-    grid-template-columns: 1fr;
-  }
-
-  li {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .itemBotoes {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-
-@media (max-width: 600px) {
-  .linha {
-    flex-direction: column;
-  }
-
-  .linha input,
-  .linha select,
-  .linha button {
-    width: 100%;
-  }
-}
+  font-size:
