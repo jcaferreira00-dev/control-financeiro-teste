@@ -22,85 +22,58 @@
 
 <h1>💰 Controle Financeiro</h1>
 
-<!-- ================================================== -->
-<!-- DASHBOARD -->
-<!-- CABEÇALHO -->
-<!-- ================================================== -->
-
-<!-- ================================================== -->
-<!-- DASHBOARD -->
-<!-- SALDO E EVOLUÇÃO FINANCEIRA -->
-<!-- ================================================== -->
-
 <div class="saldo-card">
-
-    <!-- ============================================== -->
-    <!-- PAINEL ESQUERDO -->
-    <!-- ============================================== -->
-
-    <div class="saldoEsquerda">
-
-        <div class="iconeCarteira">
-            💼
-        </div>
-
-        <h2>Saldo Atual</h2>
-
-        <h1 id="saldoAtual">
-            R$ 0,00
-        </h1>
-
-        <div class="indicadores">
-
-            <div class="indicador">
-                <span>🟢 Economia</span>
-                <strong id="indicadorEconomia">
-                    R$ 0,00
-                </strong>
-            </div>
-
-            <div class="indicador">
-                <span>🔴 Gastos</span>
-                <strong id="indicadorGastos">
-                    R$ 0,00
-                </strong>
-            </div>
-
-            <div class="indicador">
-                <span>📈 Comparação</span>
-                <strong id="indicadorComparacao">
-                    --
-                </strong>
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- ============================================== -->
-    <!-- PAINEL DIREITO -->
-    <!-- ============================================== -->
-
-    <div class="saldoDireita">
-
-        <canvas id="graficoMensal"></canvas>
-
-    </div>
-
-</div>
-
-    <!-- LADO DIREITO -->
-
-    <div class="saldoDireita">
-
-        <canvas id="graficoMensal"></canvas>
-
-    </div>
-
+<h2>Saldo Atual</h2>
+<h1 id="saldoAtual">R$ 0,00</h1>
 </div>
 
 </header>
 
+<section class="card dashboard">
+
+<h2>📊 Visão do Mês</h2>
+
+<div class="dashboardGrid">
+
+    <div class="dashboardItem">
+        <span>Receitas</span>
+        <div class="progress">
+            <div id="barReceitas" class="progressFill receitas"></div>
+        </div>
+        <strong id="txtReceitas">R$ 0,00</strong>
+    </div>
+
+    <div class="dashboardItem">
+        <span>Vale</span>
+        <div class="progress">
+            <div id="barVale" class="progressFill vale"></div>
+        </div>
+        <strong id="txtVale">R$ 0,00</strong>
+    </div>
+
+    <div class="dashboardItem">
+        <span>Pagamento</span>
+        <div class="progress">
+            <div id="barPagamento" class="progressFill pagamento"></div>
+        </div>
+        <strong id="txtPagamento">R$ 0,00</strong>
+    </div>
+
+    <div class="dashboardItem">
+        <span>Saldo</span>
+        <div class="progress">
+            <div id="barSaldo" class="progressFill saldo"></div>
+        </div>
+        <strong id="txtSaldo">R$ 0,00</strong>
+    </div>
+
+</div>
+
+<p id="statusFinanceiro" class="statusFinanceiro">
+Aguardando movimentações...
+</p>
+
+</section>
 <!-- MÊS -->
 
 <section class="card">
