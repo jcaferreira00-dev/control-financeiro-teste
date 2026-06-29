@@ -116,31 +116,47 @@ header h1{
 /* ==========================
    LISTAS
 ========================== */
-
-ul{
-    list-style:none;
+ul {
+  list-style: none;
+}
+li {
+  display: grid;
+  grid-template-columns: 1fr auto; /* título e botão lado a lado */
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  gap: 10px;
 }
 
-li{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px;
-    border-bottom:1px solid #eee;
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.itemInfo{
-    flex:1;
+.itemTitulo {
+  font-weight: bold;
+  font-size: 15px;
 }
 
-.itemTitulo{
-    font-weight:bold;
-    margin-bottom:4px;
+.itemValor {
+  color: #2e7d32;
+  font-size: 14px;
 }
 
-.itemValor{
-    color:#2e7d32;
-    font-size:15px;
+.itemBotoes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.btnExcluir {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
 }
 
 /* ==========================
@@ -322,9 +338,6 @@ li{
 
 /* ==========================
    SALDO POSITIVO/NEGATIVO
-========================== */
-/* ==========================
-   SALDO ATUAL - VISUAL MELHORADO
 ========================== */
 
 .saldo-card {
