@@ -327,14 +327,12 @@ li{
 }
 
 /* ==========================
-   SALDO NEGATIVO
+   SALDO POSITIVO/NEGATIVO
 ========================== */
+.saldoNegativo { 
+   background: #ffebee; color: #d32f2f; }
+.saldoPositivo { 
+   background: #e8f5e9; color: #2e7d32; }
 
 
-.saldoNegativo{
-    color:#ff5252 !important;
-}
 
-.saldoPositivo{
-    color:#ffffff;
-}
