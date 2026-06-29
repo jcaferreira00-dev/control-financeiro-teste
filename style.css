@@ -1,313 +1,125 @@
-/* ==========================
-   GERAL
-========================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-body {
-  background: #f2f5f8;
-  color: #333;
-  padding: 20px;
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle Financeiro</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+</head>
 
-#app {
-  max-width: 1100px;
-  margin: auto;
-}
+<body>
+<div id="app">
 
-/* ==========================
-   CABEÇALHO
-========================== */
-header {
-  text-align: center;
-  margin-bottom: 25px;
-}
+  <!-- CABEÇALHO -->
+  <header>
+    <h1>💰 Controle Financeiro</h1>
+    <div class="saldo-card saldoPositivo">
+      <h2>Saldo Atual</h2>
+      <h1 id="saldoAtual">R$ 0,00</h1>
+    </div>
+  </header>
 
-header h1 {
-  color: #2e7d32;
-  margin-bottom: 15px;
-}
+  <!-- MÊS + RECEITAS -->
+  <section class="card receitas">
+    <h2>Mês e Receitas</h2>
+    <div class="linha">
+      <select id="mesSelecionado" onchange="trocarMes()">
+        <option value="01">Janeiro</option>
+        <option value="02">Fevereiro</option>
+        <option value="03">Março</option>
+        <option value="04">Abril</option>
+        <option value="05">Maio</option>
+        <option value="06">Junho</option>
+        <option value="07">Julho</option>
+        <option value="08">Agosto</option>
+        <option value="09">Setembro</option>
+        <option value="10">Outubro</option>
+        <option value="11">Novembro</option>
+        <option value="12">Dezembro</option>
+      </select>
 
-.saldo-card {
-  background: #2e7d32;
-  color: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,.15);
-}
+      <select id="anoSelecionado" onchange="trocarMes()">
+        <option>2025</option>
+        <option selected>2026</option>
+        <option>2027</option>
+        <option>2028</option>
+      </select>
 
-.saldo-card h2 {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
+      <input id="descricaoReceita" placeholder="Nova receita">
+      <input id="valorReceita" type="number" step="0.01" placeholder="Valor">
+      <button class="btnAddReceita" onclick="adicionarReceita()">➕</button>
+    </div>
+    <ul id="listaReceitas"></ul>
+  </section>
 
-.saldo-card h1 {
-  font-size: 36px;
-  font-weight: bold;
-}
+  <!-- DESPESAS -->
+  <section class="duas-colunas">
 
-/* ==========================
-   CARDS
-========================== */
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-}
+    <div class="card vale despesas">
+      <h2>Despesas no Vale</h2>
+      <div class="linha">
+        <input id="descricaoVale" placeholder="Adicionar nova despesa">
+        <input id="valorVale" type="number" step="0.01" placeholder="Valor">
+        <button class="btnAddVale" onclick="adicionarVale()">➕</button>
+      </div>
+      <ul id="listaVale"></ul>
+    </div>
 
-.card h2 {
-  color: #2e7d32;
-  margin-bottom: 15px;
-}
+    <div class="card pagamento despesas">
+      <h2>Despesas no Pagamento</h2>
+      <div class="linha">
+        <input id="descricaoPagamento" placeholder="Adicionar nova despesa">
+        <input id="valorPagamento" type="number" step="0.01" placeholder="Valor">
+        <button onclick="adicionarPagamento()">Adicionar</button>
+      </div>
+      <ul id="listaPagamento"></ul>
+    </div>
 
-/* ==========================
-   INPUTS
-========================== */
-.linha {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 15px;
-}
+  </section>
 
-.linha input,
-.linha select {
-  flex: 1;
-  min-width: 120px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-}
+  <!-- RESUMO -->
+  <section class="card resumo">
+    <h2>Resumo</h2>
+    <p><span>Receitas</span><span id="resReceitas">R$ 0,00</span></p>
+    <p><span>Vale</span><span id="resVale">R$ 0,00</span></p>
+    <p><span>Pagamentos</span><span id="resPagamento">R$ 0,00</span></p>
+    <p class="saldoFinal"><span>Saldo</span><span id="saldoResumo">R$ 0,00</span></p>
+  </section>
 
-/* Botão ➕ compacto em Receitas */
-.btnAddReceita {
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: #2e7d32;
-  cursor: pointer;
-  padding: 0 8px;
-}
-.btnAddReceita:hover {
-  color: #1b5e20;
-}
+  <!-- FECHAR MÊS -->
+  <section class="card">
+    <button class="btnFecharMes" onclick="fecharMes()">📅 Fechar Mês</button>
+  </section>
 
-/* Botão ➕ compacto apenas no Vale */
-.vale .btnAddVale {
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: #1976d2;
-  cursor: pointer;
-  padding: 0 8px;
-}
-.vale .btnAddVale:hover {
-  color: #0d47a1;
-}
+  <!-- HISTÓRICO -->
+  <section class="card">
+    <h2>Histórico dos Meses</h2>
+    <ul id="historico"></ul>
+  </section>
 
-/* ==========================
-   DUAS COLUNAS
-========================== */
-.duas-colunas {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
+  <!-- FERRAMENTAS -->
+  <section class="card">
+    <h2>Ferramentas</h2>
+    <div class="botoes">
+      <button onclick="exportarBackup()">💾 Backup</button>
+      <button onclick="importarBackup()">📂 Restaurar</button>
+      <button class="btnExcluirTudo" onclick="limparTudo()">🗑️ Limpar Tudo</button>
+    </div>
+  </section>
 
-/* ==========================
-   LISTAS
-========================== */
-ul {
-  list-style: none;
-}
-li {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  padding: 10px 12px;
-  border-bottom: 1px solid #eee;
-  gap: 10px;
-}
+</div>
 
-.itemInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
+<input type="file" id="arquivoBackup" style="display:none">
 
-.itemTitulo {
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.itemValor {
-  color: #2e7d32;
-  font-size: 14px;
-}
-
-.itemBotoes {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-/* ==========================
-   BOTÕES DE AÇÃO
-========================== */
-.btnPagar {
-  background: #1976d2;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-
-.btnEditar {
-  background: #ff9800;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-
-.btnExcluir {
-  background: #d32f2f;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-
-/* ==========================
-   RESUMO
-========================== */
-.resumo p {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-}
-
-.saldoFinal {
-  font-weight: bold;
-  font-size: 18px;
-  color: #2e7d32;
-}
-
-/* ==========================
-   FERRAMENTAS
-========================== */
-.botoes {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.botoes button {
-  flex: 1;
-  min-width: 180px;
-  padding: 12px;
-  background: #2e7d32;
-  color: white;
-  border: none;
-  border-radius: 8px;
-}
-
-/* ==========================
-   STATUS
-========================== */
-.pago {
-  background: #e8f5e9;
-}
-
-.naoPago {
-  background: white;
-}
-
-/* ==========================
-   HISTÓRICO
-========================== */
-#historico li {
-  background: #fafafa;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  padding: 12px;
-  white-space: pre-line;
-  border: 1px solid #ddd;
-}
-
-/* ==========================
-   RESPONSIVO
-========================== */
-@media(max-width:800px) {
-  .duas-colunas {
-    grid-template-columns: 1fr;
+<script src="script.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
   }
-  li {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .itemBotoes {
-    width: 100%;
-  }
-  .itemBotoes button {
-    flex: 1;
-  }
-}
+</script>
 
-@media(max-width:600px) {
-  .receitas .linha {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .receitas .linha input,
-  .receitas .linha button,
-  .receitas .linha select {
-    min-width: 0;
-    width: 100%;
-  }
-}
-
-/* ==========================
-   BOTÃO FECHAR MÊS
-========================== */
-.btnFecharMes {
-  width: 100%;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  background: #2e7d32;
-  color: white;
-  cursor: pointer;
-  transition: .2s;
-}
-.btnFecharMes:hover {
-  background: #1b5e20;
-}
-
-/* ==========================
-   SALDO POSITIVO/NEGATIVO
-========================== */
-.saldoPositivo {
-  background: #2e7d32;
-  color: #ffffff;
-}
-.saldoPositivo h1,
-.saldoPositivo h2 {
-  color: #ffffff;
-}
-
-.saldoNegativo {
-  background: #ffebee;
-  color: #d32f2f;
-}
+</body>
+</html>
