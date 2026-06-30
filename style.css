@@ -86,7 +86,7 @@ header h1 {
   font-size: 15px;
 }
 
-/* Botão ➕ compacto em Receitas */
+/* Botão ➕ compacto em Adicionar Receitas */
 .btnAddReceita {
   background: none;
   border: none;
@@ -99,7 +99,7 @@ header h1 {
   color: #1b5e20;
 }
 
-/* Botão ➕ compacto apenas no Vale */
+/* Botão ➕ Despesas no Vale */
 .vale .btnAddVale {
   background: none;
   border: none;
@@ -112,6 +112,48 @@ header h1 {
   color: #0d47a1;
 }
 
+/* Botão ➕ Despesas no Pagamento */
+.pagamento .btnAddPagamento {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #d32f2f;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.pagamento .btnAddPagamento:hover {
+  color: #b71c1c;
+}
+/* ==========================
+   Botao FIXA la do Java
+========================== */
+.btnNormal,
+.btnFixa {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: .2s;
+}
+
+.btnNormal {
+  background: #eeeeee;
+}
+
+.btnNormal:hover {
+  background: #e0e0e0;
+}
+
+.btnFixa {
+  background: #ffd54f;
+}
+
+.btnFixa:hover {
+  background: #ffca28;
+}
 /* ==========================
    DUAS COLUNAS
 ========================== */
