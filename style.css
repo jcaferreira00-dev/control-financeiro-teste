@@ -435,23 +435,87 @@ li {
   top: 50%;
   transform: translateY(-50%);
 }
+/* ==========================
+   BOTÃO ADD OCTÓGONO (INTEGRADO)
+========================== */
 
----
+/* força sobrescrever seus botões atuais */
+.btnAddOctogono {
+  width: 42px;
+  height: 42px;
 
-✅ 🧩 2. COMO USAR NO SEU HTML
-Agora substitui qualquer botão de “+” por este:
-<button class="btnAddOctogono">
-  <span class="mais"></span>
-</button>
+  background: linear-gradient(145deg, #2ecc71, #27ae60) !important;
 
----
+  clip-path: polygon(
+    30% 0%, 70% 0%,
+    100% 30%, 100% 70%,
+    70% 100%, 30% 100%,
+    0% 70%, 0% 30%
+  );
 
-✅ 🟢 3. COMO INTEGRAR NOS SEUS BOTÕES EXISTENTES
-Hoje você tem:
-.btnAddReceita
-.btnAddVale
-.btnAddPagamento
-👉 Se quiser trocar só um deles, exemplo (Receita):
-<button class="btnAddReceita btnAddOctogono">
-  <span class="mais"></span>
-</button>
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  border: none !important;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+
+  transition: 0.2s;
+}
+
+/* BORDA */
+.btnAddOctogono::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: #ffffff;
+  clip-path: inherit;
+  z-index: -1;
+}
+
+/* HOVER */
+.btnAddOctogono:hover {
+  transform: scale(1.08);
+}
+
+/* CLICK */
+.btnAddOctogono:active {
+  transform: scale(0.95);
+}
+
+/* + CENTRAL */
+.btnAddOctogono .mais {
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+
+.btnAddOctogono .mais::before,
+.btnAddOctogono .mais::after {
+  content: "";
+  position: absolute;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.25);
+}
+
+/* vertical */
+.btnAddOctogono .mais::before {
+  width: 5px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* horizontal */
+.btnAddOctogono .mais::after {
+  height: 5px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
