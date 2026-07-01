@@ -86,74 +86,23 @@ header h1 {
   font-size: 15px;
 }
 
-/* Botão ➕ compacto em Adicionar Receitas */
-.btnAddReceita {
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: #2e7d32;
-  cursor: pointer;
-  padding: 0 8px;
+/* Padroniza o campo Valor da Receita */
+#valorReceita {
+    flex: 0 0 120px;
+    max-width: 120px;
 }
-.btnAddReceita:hover {
-  color: #1b5e20;
+/* Padroniza o campo Valor Vale*/
+#valorVale {
+    flex: 0 0 120px;
+    max-width: 120px;
 }
-
-/* Botão ➕ Despesas no Vale */
-.vale .btnAddVale {
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: #1976d2;
-  cursor: pointer;
-  padding: 0 8px;
-}
-.vale .btnAddVale:hover {
-  color: #0d47a1;
+/* Padroniza o campo Valor Pagamento*/
+#valorPagamento {
+    flex: 0 0 120px;
+    max-width: 120px;
 }
 
-/* Botão ➕ Despesas no Pagamento */
-.pagamento .btnAddPagamento {
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: #d32f2f;
-  cursor: pointer;
-  padding: 0 8px;
-}
 
-.pagamento .btnAddPagamento:hover {
-  color: #b71c1c;
-}
-/* ==========================
-   Botao FIXA la do Java
-========================== */
-.btnNormal,
-.btnFixa {
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  transition: .2s;
-}
-
-.btnNormal {
-  background: #eeeeee;
-}
-
-.btnNormal:hover {
-  background: #e0e0e0;
-}
-
-.btnFixa {
-  background: #ffd54f;
-}
-
-.btnFixa:hover {
-  background: #ffca28;
-}
 /* ==========================
    DUAS COLUNAS
 ========================== */
@@ -204,12 +153,82 @@ li {
 /* ==========================
    BOTÕES DE AÇÃO
 ========================== */
+
+.btnNormal,
+.btnFixa {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: .2s;
+}
+
+/* Botão ➕ Adicionar Receitas */
+.btnAddReceita {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #2e7d32;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+
+/* Botão ➕ Despesas no Vale */
+.vale .btnAddVale {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #1976d2;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+
+/* Botão ➕ Despesas no Pagamento */
+.pagamento .btnAddPagamento {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #d32f2f;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+
+.btnNormal {
+  background: #eeeeee;
+}
+
+.btnNormal:hover {
+  background: #e0e0e0;
+}
+
+.btnFixa {
+  background: #ffd54f;
+}
+
+.btnFixa:hover {
+  background: #ffca28;
+}
+
 .btnPagar {
   background: #1976d2;
   color: white;
   border: none;
   padding: 6px 10px;
   border-radius: 6px;
+}
+
+.btnPago{
+    background:#43a047;
+    color:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
 .btnEditar {
@@ -226,6 +245,99 @@ li {
   border: none;
   padding: 6px 10px;
   border-radius: 6px;
+}
+
+.btnAddReceita{
+    width:42px;
+    height:42px;
+
+    border:none;
+    border-radius:50%;
+
+    background:none;
+    color:#b5e9f0;
+
+    font-size:24px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.btnAddReceita:hover{
+    background:#86c9f5;
+    transform:scale(1.08);
+}
+
+.btnAddReceita:active{
+    transform:scale(.95);
+}
+
+.btnAddVale{
+    width:42px;
+    height:42px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#b5e9f0;
+    color:#b5e9f0;
+
+    font-size:24px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.btnAddVale:hover{
+    background:#86c9f5;
+    transform:scale(1.08);
+}
+
+.btnAddVale:active{
+    transform:scale(.95);
+}
+
+.btnAddPagamento{
+    width:42px;
+    height:42px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#b5e9f0;
+    color:#b5e9f0;
+
+    font-size:24px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.btnAddPagamento:hover{
+    background:#86c9f5;
+    transform:scale(1.08);
+}
+
+.btnAddPagamento:active{
+    transform:scale(.95);
 }
 
 /* ==========================
@@ -353,170 +465,3 @@ li {
   background: #ffebee;
   color: #d32f2f;
 }
-/* ==========================
-   BOTÃO ADD OCTÓGONO (NOVO)
-========================== */
-
-.btnAddOctogono {
-  width: 42px;
-  height: 42px;
-
-  background: linear-gradient(145deg, #2ecc71, #27ae60);
-
-  clip-path: polygon(
-    30% 0%, 70% 0%,
-    100% 30%, 100% 70%,
-    70% 100%, 30% 100%,
-    0% 70%, 0% 30%
-  );
-
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  border: none;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,.2);
-
-  transition: 0.2s;
-}
-
-/* BORDA */
-.btnAddOctogono::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  background: #ffffff;
-  clip-path: inherit;
-  z-index: -1;
-}
-
-/* HOVER */
-.btnAddOctogono:hover {
-  transform: scale(1.08);
-}
-
-/* CLICK */
-.btnAddOctogono:active {
-  transform: scale(0.95);
-}
-
-/* + CENTRAL */
-.btnAddOctogono .mais {
-  width: 18px;
-  height: 18px;
-  position: relative;
-}
-
-.btnAddOctogono .mais::before,
-.btnAddOctogono .mais::after {
-  content: "";
-  position: absolute;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,.25);
-}
-
-/* vertical */
-.btnAddOctogono .mais::before {
-  width: 5px;
-  height: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* horizontal */
-.btnAddOctogono .mais::after {
-  height: 5px;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-/* ==========================
-   BOTÃO ADD OCTÓGONO (INTEGRADO)
-========================== */
-
-/* força sobrescrever seus botões atuais */
-.btnAddOctogono {
-  width: 42px;
-  height: 42px;
-
-  background: linear-gradient(145deg, #2ecc71, #27ae60) !important;
-
-  clip-path: polygon(
-    30% 0%, 70% 0%,
-    100% 30%, 100% 70%,
-    70% 100%, 30% 100%,
-    0% 70%, 0% 30%
-  );
-
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-
-  border: none !important;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,.2);
-
-  transition: 0.2s;
-}
-
-/* BORDA */
-.btnAddOctogono::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  background: #ffffff;
-  clip-path: inherit;
-  z-index: -1;
-}
-
-/* HOVER */
-.btnAddOctogono:hover {
-  transform: scale(1.08);
-}
-
-/* CLICK */
-.btnAddOctogono:active {
-  transform: scale(0.95);
-}
-
-/* + CENTRAL */
-.btnAddOctogono .mais {
-  width: 18px;
-  height: 18px;
-  position: relative;
-}
-
-.btnAddOctogono .mais::before,
-.btnAddOctogono .mais::after {
-  content: "";
-  position: absolute;
-  background: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,.25);
-}
-
-/* vertical */
-.btnAddOctogono .mais::before {
-  width: 5px;
-  height: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* horizontal */
-.btnAddOctogono .mais::after {
-  height: 5px;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
